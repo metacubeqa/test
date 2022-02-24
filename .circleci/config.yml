@@ -42,4 +42,4 @@ jobs:
     #      key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # run tests!
-      - run: mvn test -DsuiteName=Test.xml
+      - run: mvn test Test
