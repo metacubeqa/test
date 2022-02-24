@@ -35,7 +35,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
         #    - v1-dependencies-
 
-    #  - run: mvn -f GuidedSelling_Sanity.xml clean package
+      - run: clean package
    #   - save_cache:
       #    paths:
     #        - ~/.gradle
