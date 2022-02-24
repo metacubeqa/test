@@ -1,0 +1,74 @@
+{
+	"id": "aeda1d23-c46e-4437-bbdb-033513328e07",
+	"name": "Prod",
+	"values": [
+		{
+			"key": "Url",
+			"value": "https://app.ringdna.com",
+			"enabled": true
+		},
+		{
+			"key": "username",
+			"value": "Akshitatestv2@ringdna.com",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "ebmdna0198WCTh1dy0BtPCD6QCANaodxto1",
+			"enabled": true
+		},
+		{
+			"key": "metabaseUrl",
+			"value": "https://reporting.ringdna.net",
+			"enabled": true
+		},
+		{
+			"key": "invalidAgentName",
+			"value": "Deep",
+			"enabled": true
+		},
+		{
+			"key": "supportPassword",
+			"value": "ebmdna0198",
+			"enabled": true
+		},
+		{
+			"key": "invalidTeamName",
+			"value": "deeTeam",
+			"enabled": true
+		},
+		{
+			"key": "invalidLocation",
+			"value": "Testloca",
+			"enabled": true
+		},
+		{
+			"key": "invalidAccountId",
+			"value": "234Acc",
+			"enabled": true
+		},
+		{
+			"key": "agentPassword",
+			"value": "ebmdna0198",
+			"enabled": false
+		},
+		{
+			"key": "accountNumber",
+			"value": "2876",
+			"enabled": true
+		},
+		{
+			"key": "card_Id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "id",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-09-23T13:09:49.676Z",
+	"_postman_exported_using": "Postman/7.32.0"
+}

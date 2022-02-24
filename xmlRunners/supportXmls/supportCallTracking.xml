@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Support Call Tracking Suite">
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+
+	<parameter name="metacubeOrg" value="metacubeOrg"></parameter>
+
+	<test name="Support Call Tracking">
+		<parameter name="suiteId" value="2"></parameter>
+		<parameter name="drivername" value="supportDriver"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<packages>
+				<package name="support.cases.adminCases.callTracking.*"/>
+		</packages>
+	</test>
+</suite>

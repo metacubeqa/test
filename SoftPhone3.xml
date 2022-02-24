@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="SoftPhone Voicemail Notification Add Contacts">
+
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+	<test name="Pre Requisites">
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="support.cases.prerequisite.PreRequisites" />
+		</classes>
+	</test>
+	<test name="SoftPhone Voicemail">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.Voicemail"></class>
+			<class name="softphone.cases.softPhoneFunctional.WebLeads"></class>
+		</classes>
+	</test>
+		<test name="SoftPhone CallNotificationWhenEditingObjects">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class
+				name="softphone.cases.softPhoneFunctional.CallNotificationWhenEditingObjects"></class>
+			<class name="softphone.cases.softPhoneFunctional.ContactSearch"></class>
+		</classes>
+	</test>
+	<test name="SoftPhone AddContactsLeads">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.AddContactsLeads"></class>
+			<class name="softphone.cases.softPhoneFunctional.ReportThisCall"></class>
+		</classes>
+	</test>
+	<test name="SoftPhone CallRecordings">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.callRecording.CallRecordingInternational"></class>
+		</classes>
+	</test> 
+	<test name="Custom User Status">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.customUserStatus.CustomUserStatus"></class>
+		</classes>
+	</test> 
+</suite> <!-- Suite -->

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Prod CAI Reports Suite">
+	<listeners>
+		<listener
+			class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+
+	<test name="Prod CAI Reports Parametrized">
+		<parameter name="suiteId" value="6477"></parameter>
+		<parameter name="drivername" value="ringDNAProdDriver"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+				<include name="MediumPriority" />
+				<exclude name="SupportOnly" />
+			</run>
+		</groups>
+		
+		<classes>
+			<class name="report.cases.caiReports.CAIReportsHealthCheck"></class>
+		</classes>
+	</test>
+</suite>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+
+	<test name="Pre Requisites">
+		<groups>
+			<run>
+				<include name="Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="support.cases.prerequisite.PreRequisites" />
+		</classes>
+	</test>
+	<test name="Sanity Suite">
+		<parameter name="suiteId" value="7"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.base.SoftphoneBase"></class>
+			<class name="softphone.cases.callDashboard.CallDashboard"></class>
+			<class name="softphone.cases.conference.ConferenceCalling"></class>
+			<class name="softphone.cases.conference.ConferenceCallingCallForwarding"></class>
+			<class name="softphone.cases.conference.ConferenceCallWithStayConnected"></class>
+			<class name="softphone.cases.conference.ConferenceCallWithStayConnected"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CallToolsNewTask"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CustomLinks"></class>
+			<class name="softphone.cases.softPhoneFunctional.settings.AdditionalNumber"></class>
+			<class name="softphone.cases.softPhoneFunctional.settings.LocalPresence"></class>
+			<class name="softphone.cases.softPhoneFunctional.settings.NoAnswer"></class>
+			<class name="softphone.cases.softPhoneFunctional.settings.OutboundNumber"></class>
+			<class name="softphone.cases.softPhoneFunctional.AddContactsLeads"></class>
+			<class name="softphone.cases.softPhoneFunctional.CallFlow"></class>
+			<class name="softphone.cases.softPhoneFunctional.CallFowarding"></class>
+			<class name="softphone.cases.softPhoneFunctional.CallTransfer"></class>
+			<class name="softphone.cases.softPhoneFunctional.ContactSearch"></class>
+			<class name="softphone.cases.softPhoneFunctional.QueueCalls"></class>
+			<class name="softphone.cases.softPhoneFunctional.Voicemail"></class>
+			<class name="softphone.cases.QuickSanity"></class>
+			<class name="softphone.cases.softPhoneMessaging.SoftPhoneMessaging"></class>
+			<class name="softphone.cases.softPhoneFunctional.CallRecordings"></class>
+		</classes>
+	</test>
+	<test name="Sanity Suite1">
+		<parameter name="suiteId" value="7"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.team.TeamSection"></class>
+		</classes>
+	</test>
+	<test name="Sanity Suite2">
+		<parameter name="suiteId" value="7"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.team.TeamSectionCallForwarding"></class>
+		</classes>
+	</test>
+	<test name="Sanity Suite3">
+		<parameter name="suiteId" value="7"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.team.TeamWithStayConnected"></class>
+		</classes>
+	</test>
+</suite> <!-- Suite -->

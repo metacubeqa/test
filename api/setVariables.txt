@@ -1,0 +1,6 @@
+setx TESTRAIL_DOMAIN "ringdna.testrail.net" /M
+setx TESTRAIL_USERNAME "abhishek.gupta@metacube.com" /M
+setx TESTRAIL_APIKEY "WgezuStNWseUU/w9h7ca-LrGkQrANJdUfHNYEF2zZ" /M
+setx TESTRAIL_PROJECTID "1" /M
+setx TESTRAIL_SUITEID "5751" /M
+setx TESTRAIL_TITLE "CAI API negative test run" /M

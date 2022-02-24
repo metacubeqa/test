@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Call Flow">
+
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+	<test name="Pre Requisites">
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="support.cases.prerequisite.PreRequisites" />
+		</classes>
+	</test>
+	<test name="Call Flow Multi Match">
+		<parameter name="suiteId" value="19"></parameter>
+		<classes>
+			<class name="softphone.cases.callFlow.CreateLeadEveryContact"></class>
+			<class name="softphone.cases.callFlow.CreateLeadMultiMatch"></class>
+		</classes>
+	</test>
+	<test name="Call Flow">
+		<parameter name="suiteId" value="19"></parameter>
+		<classes>
+			<class name="softphone.cases.callFlow.CallFlow"></class>
+			<class name="softphone.cases.callFlow.CallFlowSkills"></class>
+		</classes>
+	</test>
+	<test name="Call Flow Add Steps">
+		<parameter name="suiteId" value="19"></parameter>
+		<classes>
+			<class name="softphone.cases.callFlow.CallFlowAddSteps"></class>
+		</classes>
+	</test>
+	<test name="Call Flow Medium Priority">
+		<parameter name="suiteId" value="19"></parameter>
+		<groups>
+			<run>
+				<include name="MediumPriority" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.callFlow.CallFlowMediumPriority"></class>
+		</classes>
+	</test>
+</suite> <!-- Suite -->

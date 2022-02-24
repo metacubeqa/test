@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Prod Health Check">
+
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+	<test name="prodHealthCheck">
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.prodHealthCheck"></class>
+			
+		</classes>
+	</test>
+</suite> <!-- Suite -->

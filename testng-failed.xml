@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [SoftPhone Recording Forwarding Transfer]">
+  <listeners>
+    <listener class-name="utility.listeners.AnnotationTransformer"/>
+  </listeners>
+  <test name="SoftPhone CallRecordings(failed)">
+    <parameter name="suiteId" value="10"/>
+    <classes>
+      <class name="softphone.cases.softPhoneFunctional.LoadingDialer">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="preSuiteCheck"/>
+          <include name="afterSuiteSetup"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.LoadingDialer -->
+      <class name="softphone.base.SoftphoneBase">
+        <methods>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+        </methods>
+      </class> <!-- softphone.base.SoftphoneBase -->
+      <class name="softphone.cases.softPhoneFunctional.CallRecordings">
+        <methods>
+          <include name="call_recording_country_code_disable"/>
+          <include name="enableSettingForSelectedState"/>
+          <include name="setDriverUsedToFalse"/>
+          <include name="call_recording_team_override_outbound_calls"/>
+          <include name="verify_supervisor_notes_create_and_update"/>
+          <include name="enableRecording"/>
+          <include name="resetSetupDefault"/>
+          <include name="call_recording_override_allow_inbound_calls"/>
+          <include name="call_recording_team_none_call_flow"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.CallRecordings -->
+      <class name="softphone.cases.softPhoneFunctional.CallFowarding">
+        <methods>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="beforeClass"/>
+          <include name="disableConferenceSetting"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.CallFowarding -->
+      <class name="support.cases.prerequisite.PreRequisites">
+        <methods>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="setDriverName"/>
+        </methods>
+      </class> <!-- support.cases.prerequisite.PreRequisites -->
+      <class name="softphone.cases.softPhoneFunctional.CallTransfer">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="disableConferenceSetting"/>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="enableConferenceSetting"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.CallTransfer -->
+    </classes>
+  </test> <!-- SoftPhone CallRecordings(failed) -->
+  <test name="SoftPhone CallTransfer(failed)">
+    <parameter name="suiteId" value="10"/>
+    <classes>
+      <class name="softphone.cases.softPhoneFunctional.LoadingDialer">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="preSuiteCheck"/>
+          <include name="afterSuiteSetup"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.LoadingDialer -->
+      <class name="softphone.base.SoftphoneBase">
+        <methods>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+        </methods>
+      </class> <!-- softphone.base.SoftphoneBase -->
+      <class name="softphone.cases.softPhoneFunctional.CallRecordings">
+        <methods>
+          <include name="enableSettingForSelectedState"/>
+          <include name="setDriverUsedToFalse"/>
+          <include name="enableRecording"/>
+          <include name="resetSetupDefault"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.CallRecordings -->
+      <class name="softphone.cases.softPhoneFunctional.CallFowarding">
+        <methods>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="beforeClass"/>
+          <include name="disableConferenceSetting"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.CallFowarding -->
+      <class name="support.cases.prerequisite.PreRequisites">
+        <methods>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="setDriverName"/>
+        </methods>
+      </class> <!-- support.cases.prerequisite.PreRequisites -->
+      <class name="softphone.cases.softPhoneFunctional.CallTransfer">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="outbound_outbound_call_merge"/>
+          <include name="disableConferenceSetting"/>
+          <include name="setDriverUsedToFalse"/>
+          <include name="inbound_inbound_with_call_flow"/>
+          <include name="inbound_outbound_agent_leave"/>
+          <include name="inbound_inbound_merge_second_caller_leave"/>
+          <include name="inbound_merge_second_caller_leave_after_agent_navigate"/>
+          <include name="resetSetupDefault"/>
+          <include name="outbound_call_transfer_to_user"/>
+          <include name="setDataForTestRail"/>
+          <include name="enableConferenceSetting"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.CallTransfer -->
+    </classes>
+  </test> <!-- SoftPhone CallTransfer(failed) -->
+  <test name="SoftPhone CallFowarding(failed)">
+    <parameter name="suiteId" value="10"/>
+    <classes>
+      <class name="softphone.cases.softPhoneFunctional.LoadingDialer">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="preSuiteCheck"/>
+          <include name="afterSuiteSetup"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.LoadingDialer -->
+      <class name="softphone.base.SoftphoneBase">
+        <methods>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+        </methods>
+      </class> <!-- softphone.base.SoftphoneBase -->
+      <class name="softphone.cases.softPhoneFunctional.CallRecordings">
+        <methods>
+          <include name="enableSettingForSelectedState"/>
+          <include name="setDriverUsedToFalse"/>
+          <include name="enableRecording"/>
+          <include name="resetSetupDefault"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.CallRecordings -->
+      <class name="softphone.cases.softPhoneFunctional.CallFowarding">
+        <methods>
+          <include name="call_forwarding_call_and_merge_outbound_call"/>
+          <include name="call_forwarding_end_call_while_on_hold"/>
+          <include name="call_forwarding_to_new_number"/>
+          <include name="call_forwarding_with_outbound_number"/>
+          <include name="verify_call_forwarding_number_delete"/>
+          <include name="inbound_calling_with_forwarding"/>
+          <include name="call_outbound_forwarding_transfer_to_user"/>
+          <include name="call_forwarding_inbound_transfer_to_user_group"/>
+          <include name="calling_with_forwarding_and_local_presence"/>
+          <include name="outbound_inbound_second_caller_leave_call_forwarding"/>
+          <include name="setDataForTestRail"/>
+          <include name="beforeClass"/>
+          <include name="inbound_calling_forwarding_device_ends"/>
+          <include name="call_transfer_with_forwarding"/>
+          <include name="call_queue_call_forwarding_multiple_match"/>
+          <include name="aa_AddCallersAsContactsAndLeads"/>
+          <include name="verify_when_call_forwarding_disabled"/>
+          <include name="outbound_outbound_merge_call_forwarding"/>
+          <include name="call_forwarding_outbound_transfer_to_user_group"/>
+          <include name="call_forwarding_additional_number"/>
+          <include name="inbound_merge_call_forwarding_addition_call_vm"/>
+          <include name="call_forwarding_with_hold_resume"/>
+          <include name="call_forwarding_inbound_transfer_to_user"/>
+          <include name="verify_call_forwarding_number_label"/>
+          <include name="inbound_outbound_merge_wtih_forwarding"/>
+          <include name="outbound_calling_with_forwarding"/>
+          <include name="drop_voicemail_with_forwarding"/>
+          <include name="inbound_inbound_merge_call_forwarding_agent_leave"/>
+          <include name="outbound_inbound_hold_resume_after_caller_leave_call_forwarding"/>
+          <include name="verify_call_forwarding_number_cancel"/>
+          <include name="inbound_merge_call_forwarding_try_another_call"/>
+          <include name="outbound_outbound_resume_merge_call_forwarding"/>
+          <include name="inbound_inbound_connect_call_after_disconnect"/>
+          <include name="inbound_calling_with_forwarding_logout"/>
+          <include name="call_queue_call_forwarding"/>
+          <include name="inbound_inbound_resume_merge_call_forwarding"/>
+          <include name="validate_duplicate_forwarding_number"/>
+          <include name="resetSetupDefault"/>
+          <include name="call_forwarding_to_extension"/>
+          <include name="disableConferenceSetting"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.CallFowarding -->
+      <class name="support.cases.prerequisite.PreRequisites">
+        <methods>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="setDriverName"/>
+        </methods>
+      </class> <!-- support.cases.prerequisite.PreRequisites -->
+      <class name="softphone.cases.softPhoneFunctional.CallTransfer">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="disableConferenceSetting"/>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="enableConferenceSetting"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.CallTransfer -->
+    </classes>
+  </test> <!-- SoftPhone CallFowarding(failed) -->
+  <test name="SoftPhone LoadingDialer(failed)">
+    <parameter name="suiteId" value="10"/>
+    <classes>
+      <class name="softphone.cases.softPhoneFunctional.LoadingDialer">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="verify_general_setting_tool_tips"/>
+          <include name="load_more_my_calls_history"/>
+          <include name="setDataForTestRail"/>
+          <include name="preSuiteCheck"/>
+          <include name="afterSuiteSetup"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.LoadingDialer -->
+      <class name="softphone.base.SoftphoneBase">
+        <methods>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+        </methods>
+      </class> <!-- softphone.base.SoftphoneBase -->
+      <class name="softphone.cases.softPhoneFunctional.CallRecordings">
+        <methods>
+          <include name="enableSettingForSelectedState"/>
+          <include name="setDriverUsedToFalse"/>
+          <include name="enableRecording"/>
+          <include name="resetSetupDefault"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.CallRecordings -->
+      <class name="softphone.cases.softPhoneFunctional.CallFowarding">
+        <methods>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="beforeClass"/>
+          <include name="disableConferenceSetting"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.CallFowarding -->
+      <class name="support.cases.prerequisite.PreRequisites">
+        <methods>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="setDriverName"/>
+        </methods>
+      </class> <!-- support.cases.prerequisite.PreRequisites -->
+      <class name="softphone.cases.softPhoneFunctional.CallTransfer">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="disableConferenceSetting"/>
+          <include name="setDriverUsedToFalse"/>
+          <include name="resetSetupDefault"/>
+          <include name="setDataForTestRail"/>
+          <include name="enableConferenceSetting"/>
+        </methods>
+      </class> <!-- softphone.cases.softPhoneFunctional.CallTransfer -->
+    </classes>
+  </test> <!-- SoftPhone LoadingDialer(failed) -->
+</suite> <!-- Failed suite [SoftPhone Recording Forwarding Transfer] -->

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Reports Support Negative Role">
+	<listeners>
+		<listener
+			class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+
+	<parameter name="metacubeOrg" value="metacubeOrg"></parameter>
+
+	<test name="Support Reports Negative">
+		<parameter name="suiteId" value="47"></parameter>
+		<parameter name="drivername" value="supportDriver"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+				<include name="MediumPriority" />
+				<exclude name="AdminOnly" />
+			</run>
+		</groups>
+		
+		<packages>
+			<package name=report.cases.adminReports.adminReportsNegative.*>
+			</package>
+		</packages>
+		
+	</test>
+</suite>

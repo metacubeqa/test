@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Admin Call Tracking Suite">
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+
+	<parameter name="metacubeOrg" value="metacubeOrg"></parameter>
+
+	<test name="Pre Requisites">
+	<parameter name="account" value="metacube pvt"></parameter>
+	<groups>
+		<run>
+			<include name="Regression" />
+		</run>
+
+	</groups>
+	<classes>
+		<class name="support.cases.prerequisite.PreRequisites" />
+	</classes>
+	</test>
+	
+	<test name="Admin Call Tracking">
+		<parameter name="suiteId" value="2"></parameter>
+		<parameter name="drivername" value="adminDriver"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+				<include name="MediumPriority" />
+				<exclude name="SupportOnly" />
+			</run>
+		</groups>
+		<packages>
+				<package name="support.cases.adminCases.callTracking.*"/>
+		</packages>
+	</test>
+</suite>

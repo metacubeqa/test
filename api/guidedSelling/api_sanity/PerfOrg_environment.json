@@ -1,0 +1,264 @@
+{
+	"id": "267262a8-7140-42de-a1f5-00619174ccdd",
+	"name": "PerfOrg Template Environment",
+	"values": [
+		{
+			"key": "url",
+			"value": "https://login.salesforce.com",
+			"enabled": true
+		},
+		{
+			"key": "version",
+			"value": "50.0",
+			"enabled": true
+		},
+		{
+			"key": "username",
+			"value": "deepankerperf@ringdna.com",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "ebmdna0198",
+			"enabled": true
+		},
+		{
+			"key": "secretToken",
+			"value": "RMfgWvr0MfmSNzuN4ATWCZSX",
+			"enabled": true
+		},
+		{
+			"key": "clientId",
+			"value": "3MVG9vtcvGoeH2bjQIITcursMfIRoG3qSgpAD_fsNkFYP6VlSp7F5KB0Dvtdjq4G1A_DeXiiwyA==",
+			"enabled": true
+		},
+		{
+			"key": "clientSecret",
+			"value": "3279A8FCC8DBDDA1343729D7574438C34F508441E154143B11625F5DBD556733",
+			"enabled": true
+		},
+		{
+			"key": "redirectUrl",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "initAccessToken",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "site",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "_accessToken",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "_endpoint",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "_orgId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "_userId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "siteUrl",
+			"value": "https://qa.ringdna.com",
+			"enabled": true
+		},
+		{
+			"key": "call_ActionId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Template_Id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Template_Name",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "SMSTemplate_Id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "SMSTemplate_Name",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "SMS_ActionId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Native_AutoEmail_ActionId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Delete_Native_ActionId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "account_Id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Contact_Id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "apisecret",
+			"value": "plw6B6zOvJyvqFB0jpYpMHngq96yihauYEipr7BCh50=",
+			"enabled": true
+		},
+		{
+			"key": "apiKey",
+			"value": "E4g60A1h1xC+Pd9+Ja5QT+OoHME=",
+			"enabled": true
+		},
+		{
+			"key": "Task_ActionId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "sequence_Id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Completed_Task_ActionId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "InProgress_Task_ActionId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "SFDC_AutoEmail_ActionId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Native_ManualEmail_ActionId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "SFDC_ManualEmail_ActionId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Emailtemplate_ID",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Emailtemplate_Name",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Delete_Manual_ActionId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "call_ActionId_Delete",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "SMS_ActionId_Delete",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Delete_Completed_Task_ActionId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "LastName",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Lead_Id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Company",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Lead_sequence_Id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "_jobId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Opportunity_id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Opportunity_Name",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Campaign_id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "CampaignMembers_Id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Campaign_Id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "Campaign_Name",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-10-22T13:27:34.020Z",
+	"_postman_exported_using": "Postman/7.34.0"
+}

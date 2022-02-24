@@ -1,0 +1,4452 @@
+{
+	"info": {
+		"_postman_id": "513b83c5-0c3b-4f9f-8090-92a98455643c",
+		"name": "Admin Reports",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "SupportgettingSessionId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4389be4f-9ed6-4b47-b7f5-71a88025b437",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    var jsonData = pm.response.json();",
+									"console.log(JSON.stringify(jsonData.results))",
+									"});",
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"supportsessionID\", jsonData.sessionId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v2/session/authenticateUsernamePassword?username={{supportUserName}}&password={{supportPassword}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"session",
+								"authenticateUsernamePassword"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "{{supportUserName}}"
+								},
+								{
+									"key": "password",
+									"value": "{{supportPassword}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AdmingettingSessionId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "49cbb1f8-e84d-47eb-bfea-1df84370d2ac",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    var jsonData = pm.response.json();",
+									"console.log(JSON.stringify(jsonData.results))",
+									"});",
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"AdminsessionID\", jsonData.sessionId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v2/session/authenticateUsernamePassword?username={{adminUserName}}&password={{AdminPassword}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"session",
+								"authenticateUsernamePassword"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "{{adminUserName}}"
+								},
+								{
+									"key": "password",
+									"value": "{{AdminPassword}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AgentgettingSessionId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f95eb78b-ea74-4a59-b921-e4b08f47bfe4",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    var jsonData = pm.response.json();",
+									"console.log(JSON.stringify(jsonData.results))",
+									"});",
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"AgentsessionID\", jsonData.sessionId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v2/session/authenticateUsernamePassword?username={{agentUserName}}&password={{agentPassword}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"session",
+								"authenticateUsernamePassword"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "{{agentUserName}}"
+								},
+								{
+									"key": "password",
+									"value": "{{agentPassword}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Call Durations",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "3718bd7c-3cd2-4d1f-a614-71bdb5f905ac",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "cbfc6969-5737-4e8a-b0e0-1bff559bfd9c",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											" ",
+											"pm.test(\"C3122015 Pass iframeUrl should not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=call-duration&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-duration"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "65774b57-644e-4f9e-972b-e73233433b88",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "5ea60650-1432-4b39-a3cc-b57063258cdc",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122034 Pass iframeUrl not equal to nulll\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=call-duration&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-duration"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0f798e77-2277-451c-ac2d-62bebc5f8531",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "be26fad7-7ecb-454e-98ae-5f7062f59e07",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122051 pass iframeUrl equal to nulll\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=call-duration&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-duration"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Call Transfer",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0181a64a-b382-4b80-88d1-338874dc3d26",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "97c98de8-60f4-4321-bc28-66e2aef8b6de",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122018 pass iframeUrl not equal to nulll\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=call-transfer&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-transfer"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "253a66c1-051e-4bee-99c0-b6ab3bdfdda0",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "9dbbcfd8-8a71-4614-be31-5f0cb4052d3b",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122035 pass iframeUrl not equal to nulll\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=call-transfer&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-transfer"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "408fab77-a331-479c-bb00-3dd7f0f5f7e5",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "c43de3f2-191a-4b4f-8480-669c6270d0a7",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122052 pass iframeUrl equal to nulll\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=call-transfer&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-transfer"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d0044751-b33e-4fb9-86dd-5858d5cc8e19",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f78c5a23-0c31-4e24-b47f-24752d7f1060",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "QBR Report",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "bc1d5a1b-7192-42ab-81c1-0dc88f4c5fe8",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "c2f2a66f-90d9-4487-8cdf-6d88fce229b1",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122019 pass iframeUrl not equal to nulll\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=qbr&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "qbr"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "b0bd8089-3cc4-4cf2-8306-29210e070d54",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "b9f90396-c24a-4842-bcf1-e0ea303e8f3c",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122036 pass iframeUrl not equal to nulll\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=qbr&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "qbr"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0389d3fc-207a-4c35-b2cb-91885d364f10",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "a74c4556-9146-4177-aa37-0c628523cd93",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122053 pass iframeUrl equal to nulll\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=qbr&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "qbr"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "629a1c28-47a9-45f8-a106-39de45aa3691",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e5251b4c-3bb6-41be-83f6-a6bf93c3ac8c",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Call Distribution",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a0554334-0649-41d5-b069-30ac671ea0a3",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "52adab6c-61c4-4e7c-ba6a-7f6deeeed746",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122029 Pass iframeUrl not equal to nulll\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=call-distribution&locationName[]=%&createdAt=past7days~&agentName=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-distribution"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										},
+										{
+											"key": "createdAt",
+											"value": "past7days~"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e7a6255d-04bc-4e19-a6c0-e149615d2d3d",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "d2e3b6b1-ccd0-400d-9525-ea4082a57a18",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122046 pass iframeUrl not equal to nulll\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=call-distribution&locationName[]=%&createdAt=past7days~&agentName=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-distribution"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										},
+										{
+											"key": "createdAt",
+											"value": "past7days~"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "16f79630-1581-4189-b0ea-a2e596a7aa1d",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "f5e332b3-3596-4f19-98f5-e8e15f17ed41",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122063 pass iframeUrl equla to nulll\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=call-distribution&agentName=%&createdAt=past7days~&locationName[]=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-distribution"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										},
+										{
+											"key": "createdAt",
+											"value": "past7days~"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e72e2036-869c-4360-b38f-dfed86a28fc0",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "fb1ba6f3-a96e-4d29-a141-6d1456460339",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Supervisor Dashboard",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7e6012f4-f0f9-4343-9b56-1c0d81f91644",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "f9099f93-08f1-47b0-81df-b7fb96e2b6f9",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122020 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=supervisor&startDate=2020-08-01&endDate=2020-08-31&supervisorName=%&teamName[]=%&locationName[]=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "supervisor"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "supervisorName",
+											"value": "%"
+										},
+										{
+											"key": "teamName[]",
+											"value": "%"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "851bb07f-baa8-4778-9b72-86e4c67b5c93",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "d495a902-0e47-437f-8617-5598a8aa1715",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122037 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=supervisor&startDate=2020-08-01&endDate=2020-08-31&supervisorName=%&teamName[]=%&locationName[]=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "supervisor"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "supervisorName",
+											"value": "%"
+										},
+										{
+											"key": "teamName[]",
+											"value": "%"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2790b439-28ae-47db-bc55-b8b6d0747e8d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4c9f2c4c-afe2-4ccb-ae0a-a569bdac7088",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Average Call Duration by Day",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "6e83a0a6-4481-44c7-a7cc-c9fadbd41c13",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "b651f8e8-5bf9-42c9-90e6-cf3e9ed70c80",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122021 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=avg-call-dur-day&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "avg-call-dur-day"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "b0d95585-fb1b-4f8c-968c-d6580a25783c",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "e3fad630-0ab6-4a9a-9db9-7ca956d7023b",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122038 iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=avg-call-dur-day&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "avg-call-dur-day"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "4ba0be71-b3c0-4652-91e0-c103eaabd33b",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "e233a974-774d-420c-82ba-03b79983b1c5",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122055 pass iframeUrl equal  to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=avg-call-dur-day&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "avg-call-dur-day"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d1d92066-c6d0-4ea4-8557-1eff7f995612",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c58930c8-85ba-4210-bf04-67b0405ab50d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Average Call Duration by Day (Tabular)",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "685ab931-3b15-47bd-91ec-0f27f4b06ba6",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "19d812c0-ae10-49df-aa87-fda095c08290",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122022 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=avg-call-dur-day-tab&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "avg-call-dur-day-tab"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "c66920fb-a405-4ef0-a236-178cc70443c8",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "a556fd3e-48a0-4025-a6cc-0633b39189d1",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122039 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=avg-call-dur-day-tab&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "avg-call-dur-day-tab"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7e34c3a6-d495-45c3-979b-427ec8a2f295",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "f809510a-ceb6-4be2-ac4b-a8c75072f311",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122056 pass iframeUrl equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=avg-call-dur-day-tab&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "avg-call-dur-day-tab"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "276e34c2-b106-4ff3-b33e-bc440b6cb1ae",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa52606b-69e5-4c39-b961-ecb8f689b059",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Call Duration by Day (Tabular)",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "6ed1c507-63e4-435d-827b-4e8b8696a63a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "32ee3bc2-8a6c-4f2b-ad14-ae03f11c5b83",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122023 pass iframeUrl not quele to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=call-dur-day-tab&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-dur-day-tab"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "4685d216-2b43-4520-bb51-5e68dff86b41",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "035c1129-a0a1-4f7f-8b5e-c2b4684a9db0",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122040 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=call-dur-day-tab&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-dur-day-tab"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "aa16b2d2-e90c-473c-8057-a59274de5184",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "bfc60ae2-5d62-4282-a61d-82ecb0e59b3c",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122057 iframeUrl equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=call-dur-day-tab&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-dur-day-tab"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f4dde1e7-361c-4713-92ff-1d6cf3a34203",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c9ad58ff-5e3e-4fe4-b603-8132543140d6",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Caller Types by Day",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "d6b3b514-b863-469d-9e2c-587550f287a2",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "88d662a1-1e32-4053-af8e-ad73705ee019",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122024 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=caller-types-day&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "caller-types-day"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "3a7da2cb-0e10-4776-abc3-1f99382da536",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "0077ce62-481c-45ff-9ab0-e3a6e5d00ba5",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122041 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=caller-types-day&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "caller-types-day"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "52b87710-41f6-407d-9c4e-58743b3ecf32",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "d33c272e-1927-4f7f-a529-f6c805970c90",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122058 pass iframeUrl equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=caller-types-day&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "caller-types-day"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a507da46-8f4b-4a36-bfe7-b2e4e201a54b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d1921e36-c138-4f15-9c95-dffdf7bc705f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Caller Types by Day (Tabular)",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "cc797b57-3a20-49f5-a906-09ace4ffd5b9",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "d71b2dd3-ccc4-40af-83e2-777aaff6f17e",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122025 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=caller-types-day-tab&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "caller-types-day-tab"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "cf7ddf30-f891-4530-8340-fe7d2346002c",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "137c7ac0-0d50-4211-8b82-5ef9adeda2d7",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122042 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=caller-types-day-tab&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "caller-types-day-tab"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0cda8a72-ebe4-40d2-a60c-3686b1f65039",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "6b510f59-b591-4e5c-aac5-9e141daab955",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122059 pass iframeUrl eqaul to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=caller-types-day-tab&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "caller-types-day-tab"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c289ff46-d869-48cc-ae23-dd24bf6b8ae3",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "725f95ff-fd5e-4842-9425-9eaa4a11277c",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Call Volume by Day",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "88331183-7427-46a6-b0e1-2d6811bbf4bd",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "fc2e512d-880a-4de3-ab0a-e6afb816224b",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122026 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=call-vol-day&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-vol-day"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "ae9c570a-2a39-4278-a55d-7ec9b2a8cc3c",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "e7447a2b-e534-4155-9bd5-5903cb2179a8",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122043 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=call-vol-day&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-vol-day"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "629c3c3c-d487-480f-b7f0-88ab98836398",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "829c6c73-25bd-4b24-bb5d-d1c4d9a80b58",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122060 pass iframeUrl equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=call-vol-day&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-vol-day"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "419bd5ae-c415-40c3-8f64-b0cb5eb31f29",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a73f263a-0d1c-4a3c-8a31-40c72d440ce0",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Call Log",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "1f8b5233-2af5-4ee1-9953-247ce6264c67",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "84d1b60b-4fd8-467a-ac5d-8c5d876bcb19",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122027 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=call-log&startDate=2020-08-01&endDate=2020-08-31&agentName=%&fromNumber=%&toNumber=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-log"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										},
+										{
+											"key": "fromNumber",
+											"value": "%"
+										},
+										{
+											"key": "toNumber",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "aa080eba-665b-4d46-8ab9-dff2cc4ac701",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "54259e55-f96e-4c1f-ab48-d4708f194f95",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122044 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=call-log&startDate=2020-08-01&endDate=2020-08-31&agentName=%&teamName[]=%&locationName[]=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-log"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										},
+										{
+											"key": "teamName[]",
+											"value": "%"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "af5f721d-31c5-48e3-8f91-4626bba8a81c",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "c9ee783b-5f9b-4c9c-92f7-c5a63e53f1d0",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122061 pass iframeUrl equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=call-log&startDate=2020-08-01&endDate=2020-08-31&agentName=%&fromNumber=%&toNumber=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-log"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										},
+										{
+											"key": "fromNumber",
+											"value": "%"
+										},
+										{
+											"key": "toNumber",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0eb60655-447f-497d-a912-d1f91c2a27f3",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ccf782ed-ef4a-4a93-9786-dc5b04a71fd7",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Call Volume by Day (Tabular)",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0fea8ee3-e699-4244-a845-8016bd22ea02",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "0d0ef18a-fb39-4c64-9d55-f3554030f5d6",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122028 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=call-vol-day-tab&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-vol-day-tab"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "2016cd50-5c95-43c5-8e50-ddffec97f657",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "17861171-1468-4e2f-bce7-9b6eb7cd7bab",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122045 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=call-vol-day-tab&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-vol-day-tab"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e41ce4be-0009-4da2-9aa9-dcb52f9783cc",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "db12bfc4-464d-4aed-b428-4489c1804c4e",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122062 iframeUrl equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=call-vol-day-tab&startDate=2020-08-01&endDate=2020-08-31",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-vol-day-tab"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4e9b9e88-7310-4a93-b9df-683c0d454abe",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0d9c336-8ddc-4bfc-8be2-a61e19bdd31b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Conference Calls",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0b136876-fbed-4518-ad70-f18eb6de319d",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "b8331d0f-bbb3-40d1-bf6a-25f09247000b",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122030 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=conference-calls&startDate=2020-08-01&endDate=2020-08-31&toNumber=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "conference-calls"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "toNumber",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "b637df69-d9e1-4ffb-857b-056ebaa002b2",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "ed4481fc-f45f-479a-bc1e-3bf7301fd62f",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122047 Pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=conference-calls&startDate=2020-08-01&endDate=2020-08-31&toNumber=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "conference-calls"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "toNumber",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "5c8b2382-a5d0-4e00-9d8f-04e958ce95dd",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "d8d37c2f-e65c-405e-aa99-cc09235fcd82",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122064 Pass iframeUrl equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=conference-calls&startDate=2020-08-01&endDate=2020-08-31&toNumber=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "conference-calls"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "toNumber",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7cfde20b-d527-4373-b53e-3ebe75140c2f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c77cf694-a375-4573-a920-6b55cab213ff",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User Busy Presence Summary",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "d5df62ad-86b7-4866-ad86-f26490fa69c2",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "02faec0b-94a6-4d42-a091-6ff92ebd8987",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122031 Pass iframeUrl not eqaul to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=user-busy-presence-summary&startDate=2020-08-01&endDate=2020-08-31&agentName=%&teamName[]=%&locationName[]=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "user-busy-presence-summary"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										},
+										{
+											"key": "teamName[]",
+											"value": "%"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "aee9ec36-0bcd-47b8-a257-7a6153395a88",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "d62ebd7e-1ea6-4cb1-8e4f-407e20ef4561",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122048 pass iframeUrl not eqaul to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=user-busy-presence-summary&startDate=2020-08-01&endDate=2020-08-31&locationName[]=%&teamName[]=%&agentName=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "user-busy-presence-summary"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										},
+										{
+											"key": "teamName[]",
+											"value": "%"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7574f6db-b57a-4077-94a4-4b495b3fddf1",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "1b328fd5-b02c-485b-b17d-a177b1b562fa",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122065 pass iframeUrl equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=user-busy-presence-summary&startDate=2020-08-01&endDate=2020-08-31&locationName[]=%&teamName[]=%&agentName=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "user-busy-presence-summary"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										},
+										{
+											"key": "teamName[]",
+											"value": "%"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9d513ec9-6ff0-47ff-98a7-2c1ea9cc65fd",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "accb7775-cca8-4814-8a83-21b34fec4d4d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User Busy Presence Summary By Day",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f089087e-3d1e-494b-a853-c43b1ff9dfe5",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "4eea9fdc-9b67-4c42-93fa-af2dc474511e",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122032 Pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=user-busy-presence-summary-day&startDate=2020-08-01&endDate=2020-08-31&agentName=%&teamName[]=%&locationName[]=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "user-busy-presence-summary-day"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										},
+										{
+											"key": "teamName[]",
+											"value": "%"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "3678b6d7-28b7-49d7-9b35-bf24114ad0f8",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3a36a80-2c8d-44c6-843f-43b3838481ba",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122049 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=user-busy-presence-summary-day&startDate=2020-08-01&endDate=2020-08-31&locationName[]=%&teamName[]=%&agentName=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "user-busy-presence-summary-day"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										},
+										{
+											"key": "teamName[]",
+											"value": "%"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "08435901-23ac-48ed-9172-129710c80a88",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "c3b3183c-58d4-454c-b731-11d0a7aedb4c",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122066 pass iframeUrl equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=user-busy-presence-summary-day&startDate=2020-08-01&endDate=2020-08-31&locationName[]=%&teamName[]=%&agentName=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "user-busy-presence-summary-day"
+										},
+										{
+											"key": "startDate",
+											"value": "2020-08-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2020-08-31"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										},
+										{
+											"key": "teamName[]",
+											"value": "%"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4a0bbde5-3425-4e13-8271-9b349dd2f61b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c0292205-d5f4-4f08-9f0d-cf9ab2c75e8f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Call Recordings",
+					"item": [
+						{
+							"name": "Get Support  Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "103ffcb2-6806-4fd9-b730-d63d9190b176",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "9819b1ed-5d49-4ef5-963c-12731460a42b",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122033 pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{supportsessionID}}&accountId=460&name=call-recordings&agentName=%&voicemail=0&createdAt=2020-08-24&caller=%&locationName[]=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{supportsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-recordings"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										},
+										{
+											"key": "voicemail",
+											"value": "0"
+										},
+										{
+											"key": "createdAt",
+											"value": "2020-08-24"
+										},
+										{
+											"key": "caller",
+											"value": "%"
+										},
+										{
+											"key": "locationName[]",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Admin Response",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e3b5ac7d-49b5-4a22-b069-f7462d61db9f",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "bd4b4deb-4c2b-496c-a8df-6341a5eb0a0e",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122050 Pass iframeUrl not equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AdminsessionID}}&accountId=460&name=call-recordings&direction=%&createdAt=2020-08-24&voicemail=0&caller=%&agentName=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AdminsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-recordings"
+										},
+										{
+											"key": "direction",
+											"value": "%"
+										},
+										{
+											"key": "createdAt",
+											"value": "2020-08-24"
+										},
+										{
+											"key": "voicemail",
+											"value": "0"
+										},
+										{
+											"key": "caller",
+											"value": "%"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Agent Response ",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "35202fb2-d3db-43b4-bc19-4c7e4a7675d9",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "3af6d45f-7fb4-4953-a876-715a64999ec5",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"",
+											"pm.globals.set(\"reportURL\", jsonData.iframeUrl);",
+											"",
+											"pm.test(\"C3122067 pass iframeUrl equal to null\", function () {",
+											"    pm.expect(jsonData.iframeUrl).to.not.eql(\"null\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v2/app/reports/urlForDashboard?sessionId={{AgentsessionID}}&accountId=460&name=call-recordings&createdAt=2020-08-24&direction=%&caller=%&agentName=%",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"app",
+										"reports",
+										"urlForDashboard"
+									],
+									"query": [
+										{
+											"key": "sessionId",
+											"value": "{{AgentsessionID}}"
+										},
+										{
+											"key": "accountId",
+											"value": "460"
+										},
+										{
+											"key": "name",
+											"value": "call-recordings"
+										},
+										{
+											"key": "createdAt",
+											"value": "2020-08-24"
+										},
+										{
+											"key": "direction",
+											"value": "%"
+										},
+										{
+											"key": "caller",
+											"value": "%"
+										},
+										{
+											"key": "agentName",
+											"value": "%"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e08cfa39-42b0-4aee-a6c1-e4e6fca9539a",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb817815-c56b-4c30-bf6e-eb1a541dc428",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d4d642e1-4091-44ae-adea-06b3e937ee7d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "9f23351b-e94e-42dc-8cee-41e1235a82c3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"variable": [
+		{
+			"id": "004295d1-f27b-4db6-855d-d99dc3043f1d",
+			"key": "sessionID",
+			"value": ""
+		},
+		{
+			"id": "e8739aa8-e82b-4ef6-9a35-13c7e904c512",
+			"key": "supportsessionID",
+			"value": ""
+		},
+		{
+			"id": "3f5f537f-c13a-479d-9a68-92e18748ac49",
+			"key": "AdminsessionID",
+			"value": ""
+		},
+		{
+			"id": "58f81044-367b-4d5a-9cf8-0decf4fa447b",
+			"key": "AgentsessionID",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}

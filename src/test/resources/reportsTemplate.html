@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+	<title>
+		RingDNA Automation Execution Report
+	</title>
+</HEAD>
+<style>
+body { 
+font-family: Arial; 
+font-size: 12px !important; 
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+img { 
+    display: inline-block;
+	width: 170px;
+}
+
+.navbar_table{
+width:100%;
+padding-bottom: 30px;
+}
+
+.nav_bar{
+background-color: #3c3131;
+}
+
+.heading h1{
+color:#b7b6b6;
+}
+
+.heading h1:hover{
+color:red;
+}
+
+.logo{
+width: 172px;
+#width:12%;
+}
+
+.page-container {
+    min-height: 100%;
+    position: relative;
+}
+
+.body-container {
+   padding-bottom: 300px;
+}
+
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+	margin-bottom: 15px;
+}
+
+.row1 {
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.panel-heading-page {
+    border-bottom: 2px solid red !important;
+    background: rgba(236, 237, 232, 0.64);
+    padding: 1px 15px ;
+    position: relative;
+}
+
+.panel-heading-page h4 {
+    font-size: 16px;
+    text-transform: titlecase;
+	text-align: center;
+	font-weight: bold;
+}
+
+.table-bordered {
+    border-top: 1px solid #d8dde6;
+    border-bottom: 1px solid #d8dde6;
+	background-color: #fff;
+	border-collapse: collapse;
+	width: 100%;
+	padding-top: 15px;
+	min-height: 20%;
+	margin-bottom: 25px;
+}
+.text-heading-label {
+	font-weight:bold;
+    line-height: 1.25;
+    text-transform: titlecase;
+	font-size: 14px;
+    letter-spacing: .0625em;
+    color: #FFF;
+	background: #505050;
+	align:center;
+}
+.table-row, .table-row {
+    display: table-row;
+    border-top: 1px solid #d8dde6;
+	border-bottom: 1px solid #d8dde6;
+	border-collapse: collapse;
+	background-color: rgba(113, 99, 128, 0.09);
+}
+.text-details-heading-label{
+	font-weight:bold;
+	line-height: 1.4;
+    text-transform: titlecase;
+    letter-spacing: .0625em;
+    color: #000;
+	text-align:center;
+	background-color: rgba(236, 237, 232, 0.64);
+	font-size: 16px;
+	border-bottom: 2px solid red !important;
+	padding: 5px 15px;
+	
+}
+.table-cell{
+padding: 8px;
+text-align: center;
+}
+.table-cell:last-child{
+border-right: 1px solid #d8dde6;
+}
+
+.table-cell:first-child {
+    border-left: 1px solid #d8dde6;
+	
+}
+#test_summary .table-cell{
+width:600px;
+text-align: left !important;
+}
+#test_summary .table-cell:nth-child(odd){
+background-color:rgba(51, 51, 51, 0.19);
+font-weight: bold;
+}
+#test_result .text-heading-label {
+background:#505050; 
+color:#fff;
+}
+.fail{
+color:red !important;
+}
+.pass{
+color:#00b100 !important;
+}
+.skip{
+color:#FFD700 !important;
+}
+.fail_script{
+color:red !important;
+font-size: 14px;
+font-weight: bold;
+}
+.pass_script{
+color:#00b100 !important;
+font-size: 14px;
+font-weight: bold;
+}
+.pending_script{
+color:#FFD700 !important;
+font-size: 14px;
+font-weight: bold;
+}
+#test_result_body .table-row{
+display: table-row;
+border-collapse: collapse;
+background-color: rgba(113, 99, 128, 0.09);
+}
+.half_left{
+float:left;
+width: 60%;
+}
+.half_right{
+width: 100%;
+float: left;
+margin-left: 35%;
+height: 300px;
+position: absolute;
+}
+.test_result{
+margin: 0 0 15px;
+padding: 10px 15px;
+}
+
+#chartdiv {
+width: 100%;
+height: 95%;
+display:block;
+margin-top: -15px;
+}
+.amcharts-main-div{
+position: relative;
+}
+.amcharts-chart-div{
+overflow: hidden;
+position: relative;
+text-align: left;
+touch-action: auto;
+width: 10px;
+height: 18px;
+padding: 0px;
+}
+.parent_row{
+width:100%; 
+float:left; 
+padding:3px 0; 
+background:#FFF;
+}
+.text-heading-label .table-cell .div_cell{
+background:#505050;
+}
+.text-heading-label .table-cell .parent_row{
+background:#505050;
+}
+#test_result_body .table-row:nth-child(even) .parent_row{
+background:#F8F8F9;
+}
+.div_cell{
+width: 30%;
+float:left;
+text-align: left;
+padding-left:40px;
+border-collapse: collapse;
+min-height:30px;
+word-wrap: break-word;
+}
+.div_cell1{
+width: 35%;
+float:left;
+text-align: left;
+border-collapse: collapse;
+min-height:1px;
+padding-left:30px;
+word-wrap: break-word;
+}
+.div_cell2{
+width: 30%;
+float:left;
+text-align: left;
+border-collapse: collapse;
+min-height:1px;
+padding-left:40px;
+word-wrap: break-word;
+}
+.div_cell3{
+width: 11%;
+float:left;
+text-align: left;
+padding-left:8px;
+border-collapse: collapse;
+min-height:1px;
+word-wrap: break-word;
+}
+.div_cell4{
+width: 5.5%;
+float:left;
+text-align: left;
+border-collapse: collapse;
+min-height:1px;
+padding-left:5px;
+word-wrap: break-word;
+}
+.div_cell5{
+width: 11.33%;
+float:left;
+text-align: left;
+padding-left:30px;
+border-collapse: collapse;
+min-height:1px;
+word-wrap: break-word;
+}
+.div_img{
+width:5%; 
+float:left;
+text-align: center;
+cursor:pointer
+}
+.div_s_no{
+width:5%; 
+float:left;
+text-align: left;
+}
+.view_more{
+width:98%; 
+float:left; 
+border:1px solid #d8dde6; 
+clear:both; 
+background:#efefef; 
+margin:5px 1%;
+}
+.view_more_heading{
+font-weight:bold;
+padding-left:50px !important;
+}
+.view_more_parent{
+width:98%; 
+float:left; 
+clear:both; 
+background:#efefef; 
+margin:5px 1%;
+}
+.view_more_child{
+width: 98%;
+float: left;
+clear: both;
+background: #efefef;
+margin: 10px 1%; 
+margin-bottom: 0px !important;
+border-bottom:1px solid #d8dde6;
+min-height: 30px;
+}
+.view_more_child:last-child {
+border-bottom:none !important; 
+}
+.view_more_child:first-child {
+border-top:1px solid #d8dde6 !important;
+}
+.step{
+padding-left: 25px !important;
+}
+
+a[target="_self"]{
+ display: none !important;
+}
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/pie.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script type="text/javascript">
+function showMore(x,testResults) {
+	x.setAttribute("style", "display:none;");
+	var arrowUp= x.nextElementSibling;
+	arrowUp.setAttribute('style', 'display:block;');
+	var refrenceNode=x.parentNode;
+    var newNode= document.createElement('div');
+	var innerText = '<div class="view_more_parent">'+testResults+'</div>'
+	newNode.setAttribute("class","view_more");
+	newNode.innerHTML=innerText;
+	refrenceNode.parentNode.insertBefore(newNode, refrenceNode.nextElementSibling);
+}
+	
+	function my_screenshot(screenshot_url) {
+		var w = window.open("", "_blank");
+		w.document.write('<img src="'+screenshot_url+'"/>');
+		w.document.title = "Screenshot image";
+		w.document.close();
+	}
+	
+	function showLess(x) {
+			x.setAttribute("style", "display:none;");
+			var arrowDown= x.previousElementSibling;
+			arrowDown.setAttribute('style', 'display:block;');
+			var refrenceNode=x.parentNode;
+			refrenceNode.nextElementSibling.parentNode.removeChild(refrenceNode.nextElementSibling);
+	}
+	var chart = AmCharts.makeChart( "chartdiv", {
+	  "radius": "40%",
+	  "type": "pie",
+	  "dataProvider": [ {
+		"status": "Pass",
+		"count": $$Pass_Count$$,
+		"color":"#0eef17"
+	  }, {
+		"status": "Fail",
+		"count": $$Fail_Count$$,
+		"color":"#f70303"
+	  }, {
+		"status": "Skipped",
+		"count": $$Skip_Count$$,
+		"color":"#ffeb3b"
+	  }],
+	  "valueField": "count",
+	  "titleField": "status",
+	  "colorField": "color",
+	  "balloon":{
+		"enabled": true
+		},
+		"export": {
+			"enabled": false
+		}
+	} );
+	var node=document.querySelector('[title="JavaScript charts"]');
+</script>
+<BODY>
+	<BODY>
+	<div class="container">
+		<div class="page-container">
+			<table class="navbar_table">
+				<tr class="nav_bar">
+					<td class="heading">
+						<h1 align = "center" >RingDNA Automation</h1>
+					</td>
+				</tr>
+			</table>
+			<div class="body-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="panel-heading-page">
+							<h4>Automation Execution Report </h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="half_left">
+							<table class="table-bordered">
+								<thead class="text-heading-label">
+									<tr>
+										<th class="table-cell" colspan="4">Execution Summary</th>
+									</tr>
+								</thead>
+								<tbody id="test_summary">
+									<tr class="table-row">
+										<td class="table-cell">Project Name</td>
+										<td class="table-cell">RingDNA</td>
+										<td class="table-cell">Environment</td>
+										<td class="table-cell">QA</td>
+									</tr>
+									</tr>
+									<tr class="table-row">
+										<td class="table-cell">Execution Date</td>
+										<td class="table-cell">$$Execution_Date$$</td>
+										<td class="table-cell">Browser</td>
+										<td class="table-cell">Chrome</td>
+									</tr>
+									<tr class="table-row">
+										<td class="table-cell">Sprint</td>
+										<td class="table-cell">$$Sprint$$</td>
+										<td class="table-cell">Suite Name</td>
+										<td class="table-cell">$$Suite_Name$$</td>
+									</tr>
+									<tr class="table-row">
+										<td class="table-cell">Test Script Executed</td>
+										<td class="table-cell">$$Total_Tests$$</td>
+										<td class="table-cell">Skipped</td>
+										<td class="table-cell pending_script">$$Skipped$$</td>
+									</tr>
+									<tr class="table-row">
+										<td class="table-cell">Script Passed</td>
+										<td class="table-cell pass_script">$$Pass_Count$$</td>
+										<td class="table-cell">Script Failed</td>
+										<td class="table-cell fail_script">$$Fail_Count$$</td>
+									</tr>
+									<tr class="table-row">
+										<td class="table-cell">Test Rail Run Link</td>
+										<td class="table-cell">$$TestRailLink$$</td>
+										<td class="table-cell">Type</td>
+										<td class="table-cell">$$Type$$</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="half_right">
+							<div id="chartdiv">
+								
+							</div>
+						</div>
+					</div>
+							$$Test_Result_Table$$
+			</div>
+		</div>
+	</div>	
+</BODY>
+</HTML>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Admin Regression">
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+
+	<parameter name="metacubeOrg" value="metacubeOrg"></parameter>
+
+	<test name="Pre Requisites">
+		<parameter name="account" value="metacube pvt"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="support.cases.prerequisite.PreRequisites" />
+		</classes>
+	</test>
+
+	<test name="Admin Call Recording">
+		<parameter name="suiteId" value="2"></parameter>
+		<parameter name="drivername" value="adminDriver"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+				<exclude name="SupportOnly" />
+			</run>
+		</groups>
+		<classes>
+			<class name="support.cases.accountCases.CallRecording"></class>
+		</classes>
+	</test>
+
+	<test name="Admin Functional">
+		<parameter name="suiteId" value="2"></parameter>
+		<parameter name="drivername" value="adminDriver"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+				<exclude name="SupportOnly" />
+			</run>
+		</groups>
+		<packages>
+			<package name="support.cases.*">
+				<exclude name="support.cases.prerequisite"></exclude>
+				<exclude name="support.cases.conversationAI"></exclude>
+				<exclude name="support.cases.caiReact"></exclude>
+				<exclude name="support.cases.conversationAIReact"></exclude>
+				<exclude name="support.cases.conversationAIReact.caiSettings"></exclude>
+				<exclude name="support.cases.reportCases"></exclude>
+				<exclude name="support.cases.personalCalendar"></exclude>
+			</package>
+		</packages>
+
+		<!-- Excluding Admin Call Recording class within admin functional suite -->
+
+		<classes>
+			<class name="support.cases.accountCases.CallRecording">
+				<methods>
+					<exclude name=".*" />
+				</methods>
+			</class>
+		</classes>
+
+	</test>
+</suite>

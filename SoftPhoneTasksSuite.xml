@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="SoftPhone Tasks">
+
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+	<test name="Pre Requisites">
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="support.cases.prerequisite.PreRequisites" />
+		</classes>
+	</test>
+	<test name="SoftPhone Tasks">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.base.SoftphoneBase"></class>
+			<class name="softphone.cases.softPhoneFunctional.ActivityFeeds"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CallToolsNewTask"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CallToolsNewTaskDueDateDisable"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CallNotes"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CallTemplate"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CallToolsNewEvent"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CustomLinks"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.RelatedRecords"></class>
+		</classes>
+	</test>
+</suite> <!-- Suite -->

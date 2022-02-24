@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="ConferenceSuite">
+
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+	<test name="Conference Calling With Call Forwarding">
+		<parameter name="suiteId" value="15"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.base.SoftphoneBase"></class>
+			<class name="softphone.cases.conference.ConferenceCallingCallForwarding" />
+		</classes>
+	</test>
+
+	<test name="Conference Calling" preserve-order="true">
+		<parameter name="suiteId" value="15"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.conference.ConferenceCalling" />
+		</classes>
+	</test>
+
+	<test name="Call Forwarding With Stay Connected">
+		<parameter name="suiteId" value="15"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.conference.ConferenceCallWithStayConnected" />
+		</classes>
+	</test>
+</suite> <!-- Suite -->

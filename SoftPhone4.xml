@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="SoftPhone Disposition Multi Match Required Cases">
+
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+	<test name="Pre Requisites">
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="support.cases.prerequisite.PreRequisites" />
+		</classes>
+	</test>
+	<test name="SoftPhone CallDisposition">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.CallDisposition"></class>
+			<class name="softphone.cases.softPhoneFunctional.CallDispositionCallFlow"></class>
+		</classes>
+	</test>
+	<test name="SoftPhone CallDisposition Call Flow">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.CallDispositionCallFlow"></class>
+		</classes>
+	</test>
+		<test name="SoftPhone Multiple Match Required">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.MultiMatchRequired"></class>
+		</classes>
+	</test>
+	<!-- <test name="SoftPhone Custom sfdc fields">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.TaskEventCustomFields"></class>
+		</classes>
+	</test> -->
+</suite> <!-- Suite -->

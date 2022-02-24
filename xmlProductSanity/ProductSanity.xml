@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+
+	<test name="Pre Requisites">
+		<groups>
+			<run>
+				<include name="Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="support.cases.prerequisite.PreRequisites" />
+		</classes>
+	</test>
+	<test name="Product Sanity Suite">
+		<parameter name="suiteId" value="6236"></parameter>
+		<groups>
+			<run>
+				<include name="Product Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.ContactSearch"></class>
+			<class name="softphone.cases.callFlow.ACDCallFlow"></class>
+			<class name="softphone.cases.callFlow.CallFlow"></class>
+			<class name="softphone.cases.callFlow.CallFlowMediumPriority"></class>
+			<class name="softphone.cases.callFlow.CallFlowSkills"></class>
+			<class name="softphone.cases.callFlow.CreateLeadMultiMatch"></class>
+			<class name="softphone.cases.softPhoneFunctional.CallFlow"></class>
+		</classes>
+	</test>
+
+	<test name="Product Sanity Suite2">
+		<parameter name="suiteId" value="6236"></parameter>
+		<groups>
+			<run>
+				<include name="Product Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.AddContactsLeads"></class>
+			<class name="softphone.cases.softPhoneFunctional.CallFowarding"></class>
+			<class name="softphone.cases.softPhoneFunctional.CallNotificationWhenEditingObjects"></class>
+			<class name="softphone.cases.softPhoneFunctional.CallTransfer"></class>
+			<class name="softphone.cases.softPhoneFunctional.OtherFunctionalCases"></class>
+		</classes>
+	</test>
+
+	<test name="Product Sanity Suite3">
+		<parameter name="suiteId" value="6236"></parameter>
+		<groups>
+			<run>
+				<include name="Product Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.QueueCalls"></class>
+			<class name="softphone.cases.softPhoneFunctional.Voicemail"></class>
+			<class name="softphone.cases.softPhoneFunctional.WebLeads"></class>
+			<class name="softphone.cases.softPhoneFunctional.callRecording.CallRecordingOverview"></class>
+		</classes>
+	</test>
+
+	<test name="Product Sanity Suite4">
+		<parameter name="suiteId" value="6236"></parameter>
+		<groups>
+			<run>
+				<include name="Product Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CallNotes"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CallToolsNewEvent"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CallToolsNewTask"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CallToolsNewTaskDueDateDisable"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.CustomLinks"></class>
+			<class name="softphone.cases.softPhoneFunctional.callTools.RelatedRecords"></class>
+		</classes>
+	</test>
+
+	<test name="Product Sanity Suite5">
+		<parameter name="suiteId" value="6236"></parameter>
+		<groups>
+			<run>
+				<include name="Product Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.settings.AdditionalNumber"></class>
+			<class name="softphone.cases.softPhoneFunctional.settings.LocalPresence"></class>
+			<class name="softphone.cases.softPhoneFunctional.settings.NoAnswer"></class>
+			<class name="softphone.cases.softPhoneFunctional.settings.OutboundNumber"></class>
+			<class name="softphone.cases.softPhoneMessaging.SoftPhoneMessaging"></class>
+		</classes>
+	</test>
+
+	<test name="Product Sanity Suite6">
+		<parameter name="suiteId" value="6236"></parameter>
+		<groups>
+			<run>
+				<include name="Product Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.team.TeamSection"></class>
+		</classes>
+	</test>
+
+	<test name="Product Sanity Suite7">
+		<parameter name="suiteId" value="6236"></parameter>
+		<groups>
+			<run>
+				<include name="Product Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.team.TeamWithStayConnected"></class>
+		</classes>
+	</test>
+	
+	<test name="Product Sanity Suite1">
+		<parameter name="suiteId" value="6236"></parameter>
+		<groups>
+			<run>
+				<include name="Product Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.conference.ConferenceCalling"></class>
+			<class
+				name="softphone.cases.conference.ConferenceCallingCallForwarding"></class>
+			<class name="softphone.cases.customUserStatus.CustomUserStatus"></class>
+		</classes>
+	</test>
+</suite> <!-- Suite -->

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Softphone Messaging">
+
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+	<test name="Pre Requisites">
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="support.cases.prerequisite.PreRequisites" />
+		</classes>
+	</test>
+	<test name="Softphone Messaging">
+		<parameter name="suiteId" value="13"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.base.SoftphoneBase"></class>
+			<class name="softphone.cases.softPhoneMessaging.SoftPhoneMessaging"></class>
+		</classes>
+	</test>
+	<test name="Softphone Messaging Medium Priority">
+		<parameter name="suiteId" value="13"></parameter>
+		<groups>
+			<run>
+				<include name="MediumPriority" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.base.SoftphoneBase"></class>
+			<class name="softphone.cases.softPhoneMessaging.SoftPhoneMessaging"></class>
+		</classes>
+	</test>
+</suite> <!-- Suite -->

@@ -1,0 +1,94 @@
+{
+	"id": "fc77ba7a-5cf3-4627-b65b-96538bfeb504",
+	"name": "QA",
+	"values": [
+		{
+			"key": "Url",
+			"value": "https://qa.ringdna.com",
+			"enabled": true
+		},
+		{
+			"key": "username",
+			"value": "akshitatest@ringdna.com",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "Auto01986",
+			"enabled": true
+		},
+		{
+			"key": "metabaseUrl",
+			"value": "https://reporting-qa.ringdna.net",
+			"enabled": true
+		},
+		{
+			"key": "supportUserName",
+			"value": "tanviqav2@ringdna.com",
+			"enabled": true
+		},
+		{
+			"key": "supportPassword",
+			"value": "ebmdna0198",
+			"enabled": true
+		},
+		{
+			"key": "adminUserName",
+			"value": "deepanker.support@meta.com",
+			"enabled": true
+		},
+		{
+			"key": "AdminPassword",
+			"value": "ebmdna0198",
+			"enabled": true
+		},
+		{
+			"key": "agentUserName",
+			"value": "akshita.qav2@ringdna.com",
+			"enabled": true
+		},
+		{
+			"key": "agentPassword",
+			"value": "ebmdna0198",
+			"enabled": true
+		},
+		{
+			"key": "accountNumber",
+			"value": "460",
+			"enabled": true
+		},
+		{
+			"key": "card_Id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "invalidAccountId",
+			"value": "460www",
+			"enabled": true
+		},
+		{
+			"key": "invalidAgentName",
+			"value": "Deepank",
+			"enabled": true
+		},
+		{
+			"key": "invalidTeamName",
+			"value": "teamdtest",
+			"enabled": true
+		},
+		{
+			"key": "invalidLocation",
+			"value": "Loca",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-10-09T09:40:25.439Z",
+	"_postman_exported_using": "Postman/7.33.1"
+}

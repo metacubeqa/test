@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TeamSectionSuite">
+
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+
+	<test name="Team Section">
+		<parameter name="suiteId" value="16"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.base.SoftphoneBase"></class>
+			<class name="softphone.cases.team.TeamSection" />
+		</classes>
+	</test>
+
+	<test name="Team Section with CallForwarding">
+		<parameter name="suiteId" value="16"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.team.TeamSectionCallForwarding" />
+		</classes>
+	</test>
+
+	<test name="Team Section with Stay Connected">
+		<parameter name="suiteId" value="16"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.team.TeamWithStayConnected" />
+		</classes>
+	</test>
+
+	<test name="Team Visibility">
+		<parameter name="suiteId" value="16"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.team.TeamVisibility" />
+		</classes>
+	</test>
+	<test name="Team Search And Filters">
+		<parameter name="suiteId" value="16"></parameter>
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="softphone.cases.team.TeamSearchAndFilters" />
+		</classes>
+	</test>
+
+</suite> <!-- Suite -->

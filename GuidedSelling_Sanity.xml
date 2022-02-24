@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Guided Selling Sanity Suite">
+	
+	<listeners>
+		<listener
+			class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+
+	<test name="Guided Selling Sanity Tests">
+		<parameter name="suiteId" value="10012"></parameter>
+		<groups>
+			<run>
+				<include name="Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="guidedSelling.cases.GS_Sanity">
+			</class>
+		</classes>
+	</test>
+</suite> 

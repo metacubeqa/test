@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="SoftPhone Remaining Cases">
+
+	<listeners>
+		<listener class-name="utility.listeners.AnnotationTransformer" />
+	</listeners>
+	<test name="Pre Requisites">
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="support.cases.prerequisite.PreRequisites" />
+		</classes>
+	</test>
+	<test name="SoftPhone CallFlow">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.CallFlow"></class>
+		</classes>
+	</test>
+	<test name="SoftPhone AdditionalNumber">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.settings.AdditionalNumber"></class>
+			<class name="softphone.cases.softPhoneFunctional.settings.LocalPresence"></class>
+			<class name="softphone.cases.softPhoneFunctional.settings.NoAnswer"></class>
+			<class name="softphone.cases.softPhoneFunctional.settings.OutboundNumber"></class>
+			<class name="softphone.cases.softPhoneFunctional.settings.CustomCalls"></class>
+		</classes>
+	</test>
+	<test name="SoftPhone OtherFunctionalCases">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.OtherFunctionalCases"></class>
+		</classes>
+	</test>
+	<test name="SoftPhone QueueCalls">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.QueueCalls"></class>
+			<class name="softphone.cases.softPhoneFunctional.sfdcTasks"></class>
+		</classes>
+	</test>
+	<test name="SoftPhone Update Assigned Caller">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.UpdateAssignedCaller"></class>
+		</classes>
+	</test>
+	<test name="SoftPhone Group Calls History">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.GroupCallHistory"></class>
+		</classes>
+	</test>
+	<test name="SoftPhone Blocked Numbers">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.BlockedNumbers"></class>
+		</classes>
+	</test>
+	<test name="SoftPhone Wrap Up Time">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.WrapUpTime"></class>
+		</classes>
+	</test>	
+	<test name="SoftPhone Complaince Hours">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.ComplainceHours"></class>
+		</classes>
+	</test>	
+	<!-- <test name="SoftPhone Call Recordings Visibility">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.CallRecordingsVisibility"></class>
+		</classes>
+	</test>	 -->
+	<!-- <test name="SoftPhone Custom sfdc fields">
+		<parameter name="suiteId" value="10"></parameter>
+		<classes>
+			<class name="softphone.cases.softPhoneFunctional.TaskEventCustomFields"></class>
+		</classes>
+	</test> -->
+</suite> <!-- Suite -->
