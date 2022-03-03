@@ -19,10 +19,7 @@ import utility.testrail.APIException;
 
 public class TestRailManager {
 
-	//TestRail data
-	private static final String TESTRAIL_URL = "https://ringdna.testrail.net/";
-	private static final String TESTRAIL_USERNAME = "vishal.chaudhary@metacube.com";
-	private static final String TESTRAIL_PASSWORD= "kEj0t/5nMhurP8IAFPlh-ub.TcS.OxQSGA6tZp8ZE";
+	
 
 	public static List<Integer> runCaseIds = new ArrayList<Integer>();
 	public String[] scriptNames = {"test_case_1", "test_case_2", "test_case_3", "test_case_4", "test_case_5"}; 
